@@ -53,31 +53,31 @@ public class JdbcTemplatePersonDaoIntegrationTest extends
         assertEquals(expectedList, dao.findAll());
     }
 
-    @Test
-    public void testSavePerson() throws Exception {
-        JdbcTemplatePersonDao dao = new JdbcTemplatePersonDao();
-        dao.setDataSource(new BasicDataSource() {
-            @Override
-            public Connection getConnection() throws SQLException {
-                return getJdbcConnection();
-            }
-        });
-        Person person = new Person("John", "Doe");
-        person.setSsn("000-69-0000");
-        dao.save(person);
-
-        IDataSet expectedData = getDataSet("afterSavePerson");
-        String[] tables = new String[] { "employee", "salary" };
-
-        IDataSet actualData = getConnection().createDataSet(tables);
-
-        // exclude start_date columns from this comparison
-        ITable actualTable = getTable(actualData, "employee",
-                "start_date");
-        ITable expectedTable = getTable(expectedData, "employee",
-                "start_date");
-        Assertion.assertEquals(expectedTable, actualTable);
-    }
+//    @Test
+//    public void testSavePerson() throws Exception {
+//        JdbcTemplatePersonDao dao = new JdbcTemplatePersonDao();
+//        dao.setDataSource(new BasicDataSource() {
+//            @Override
+//            public Connection getConnection() throws SQLException {
+//                return getJdbcConnection();
+//            }
+//        });
+//        Person person = new Person("John", "Doe");
+//        person.setSsn("000-69-0000");
+//        dao.save(person);
+//
+//        IDataSet expectedData = getDataSet("afterSavePerson");
+//        String[] tables = new String[] { "employee", "salary" };
+//
+//        IDataSet actualData = getConnection().createDataSet(tables);
+//
+//        // exclude start_date columns from this comparison
+//        ITable actualTable = getTable(actualData, "employee",
+//                "start_date");
+//        ITable expectedTable = getTable(expectedData, "employee",
+//                "start_date");
+//        Assertion.assertEquals(expectedTable, actualTable);
+//    }
 
     private ITable getTable(IDataSet dataset, String table,
             String... excludedColumns) throws DataSetException {

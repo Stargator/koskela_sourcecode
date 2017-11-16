@@ -66,11 +66,11 @@ public class SpringHibernatePersonDaoIntegrationTest extends
         s.flush();
     }
 
-    @Test
-    public void testFindByLastname() throws Exception {
-        SpringHibernatePersonDao dao = new SpringHibernatePersonDao();
-        dao.setSessionFactory(sf);
-        Assert.assertEquals(theSmiths, dao.findByLastname("Smith"));
-    }
+  //  @Test
+ //   public void testFindByLastname() throws Exception {
+ //       SpringHibernatePersonDao dao = new SpringHibernatePersonDao();
+ //       dao.setSessionFactory(sf);
+ //       Assert.assertEquals(theSmiths, dao.findByLastname("Smith"));
+ //   }
 
 }
